@@ -891,3 +891,13 @@ left join reviews
     on series.id = reviews.series_id
 where reviews.rating is null;
 
+/*  TV JOINS #5 genre and avg rating*/
+select
+    genre,
+   avg(rating) AS avg_rating
+from series
+inner join reviews
+    on series.id = reviews.series_id
+GROUP by genre
+ORDER BY avg(rating) desc;
+
