@@ -863,3 +863,23 @@ CREATE TABLE reviews(
 );
 
 SELECT * FROM reviews;
+
+/*  TV JOINS #2*/
+SELECT
+    title,
+    AVG(rating) as avg_rating
+FROM series
+JOIN reviews
+    ON series.id = reviews.series_id
+GROUP BY series.id
+ORDER BY avg_rating desc;
+
+/*  TV JOINS #2*/
+select 
+    first_name,
+    last_name,
+    rating
+FROM reviewers
+JOIN reviews
+    ON reviewers.id = reviews.reviewer_id;
+
