@@ -874,7 +874,7 @@ JOIN reviews
 GROUP BY series.id
 ORDER BY avg_rating desc;
 
-/*  TV JOINS #2*/
+/*  TV JOINS #3*/
 select 
     first_name,
     last_name,
@@ -882,4 +882,12 @@ select
 FROM reviewers
 JOIN reviews
     ON reviewers.id = reviews.reviewer_id;
+
+/*  TV JOINS #4 unreview series*/
+select
+    title
+from series
+left join reviews
+    on series.id = reviews.series_id
+where reviews.rating is null;
 
