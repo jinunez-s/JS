@@ -908,7 +908,7 @@ select
     count(rating) AS count,
     IFNULL(min(rating),0) AS min,
     IFNULL(max(rating), 0) AS max,
-    IFNULL(AVG(rating), 0) AS avg_rating,
+    ROUND(IFNULL(AVG(rating), 0), 2)AS avg_rating,
     CASE
         WHEN count(rating) > 0 then 'ACTIVE'
         ELSE 'INACTIVE'
@@ -918,3 +918,27 @@ left join reviews
     on reviewers.id = reviews.reviewer_id
 Group by first_name, last_name
 order by count(rating) desc;
+
+/*  TV JOINS #7  review PER REVIEWER AND SERIE*/
+/*OPTION 1*/
+SELECT 
+    title,
+    rating,
+    concat(first_name, ' ', last_name) AS reviewer
+from series
+inner join reviews
+    on series.id = reviews.series_id
+inner join reviewers
+    on reviewers.id = reviews.reviewer_id
+ORDER BY title;
+/*OPTION 2*/
+SELECT 
+    title,
+    rating,
+    CONCAT(first_name,' ', last_name) AS reviewer
+FROM reviewers
+INNER JOIN reviews 
+    ON reviewers.id = reviews.reviewer_id
+INNER JOIN series
+    ON series.id = reviews.series_id
+ORDER BY title;
