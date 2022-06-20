@@ -1,0 +1,10 @@
+*{
+    background: linear-gradient(to bottom left, #00ff99 0%, #6699ff 100%);
+    
+}
+h1{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: aliceblue;
+}
