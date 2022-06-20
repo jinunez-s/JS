@@ -901,3 +901,20 @@ inner join reviews
 GROUP by genre
 ORDER BY avg(rating) desc;
 
+/*  TV JOINS #6  reviewers stats*/
+select
+    first_name,
+    last_name,
+    count(rating) AS count,
+    IFNULL(min(rating),0) AS min,
+    IFNULL(max(rating), 0) AS max,
+    IFNULL(AVG(rating), 0) AS avg_rating,
+    CASE
+        WHEN count(rating) > 0 then 'ACTIVE'
+        ELSE 'INACTIVE'
+    END AS STATUS
+from reviewers
+left join reviews
+    on reviewers.id = reviews.reviewer_id
+Group by first_name, last_name
+order by count(rating) desc;
