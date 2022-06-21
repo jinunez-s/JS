@@ -942,3 +942,58 @@ INNER JOIN reviews
 INNER JOIN series
     ON series.id = reviews.series_id
 ORDER BY title;
+
+/**/
+
+CREATE DATABASE ig;
+use ig;
+
+CREATE TABLE users(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+INSERT INTO users(username) VALUES
+    ('BlueTheCat'),
+    ('CharlieBrown'),
+    ('ColtSteele')
+;
+
+/**/
+CREATE TABLE photos(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    img_url VARCHAR(100) NOT NULL,
+    user_id INTEGER NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW(),
+    FOREIGN KEY(user_id) REFERENCES users(id)
+);
+
+INSERT INTO photos(img_url, user_id) VALUES
+('/bird', 1),
+('/cat', 2),
+('/dog', 3);
+
+CREATE TABLE comments(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    comment_text VARCHAR(255) NOT NULL,
+    user_id INTEGER NOT NULL, 
+    photo_id INTEGER NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW(),
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY(photo_id) REFERENCES photos(id)
+);
+
+INSERT INTO comments(comment_text, user_id, photo_id) VALUES
+('Example photo 4 comment', 1, 4),
+('Example photo 5 comment', 2, 5),
+('Example photo 6 comment', 3, 6);
+
+CREATE TABLE likes(
+    user_id INTEGER NOT NULL,
+    photo_id INTEGER NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW(),
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (photo_id) REFERENCES photos(id)
+);
+
