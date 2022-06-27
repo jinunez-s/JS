@@ -39,6 +39,12 @@ public class Item {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        // return "Item [name=" + name + ", price=" + price + ", quantity=" + quantity + "]";
+        return name + ": " + price + " (" + quantity + ")";
+    }
+
     
     
 }
