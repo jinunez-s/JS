@@ -10,9 +10,9 @@ public class Item {
     }
 
     public Item(Item source){
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
+        this.name = source.name;
+        this.price = source.price;
+        this.quantity = source.quantity;
     }
 
     public String getName() {
