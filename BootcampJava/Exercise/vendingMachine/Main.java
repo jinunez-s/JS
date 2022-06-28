@@ -10,7 +10,10 @@ public class Main{
             {new Item("7-Up", 4.95, 15), new Item("Pepsi black", 4.95, 10), new Item("Uva", 4.95, 15)}
         };
 
-        //System.out.println((items[1][2]).toString());
-        System.out.println(items[2][2]);
+        Machine machine = new Machine(items);
+
+        items[2][1] = 2.99;
+        items[2][1].getPrice();
+
     }
 }

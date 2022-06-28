@@ -1,4 +1,4 @@
-package java.Exercise.various;
+
 
 import java.util.Arrays;
 
