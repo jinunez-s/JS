@@ -11,8 +11,7 @@ public class Main{
         };
 
         Machine machine = new Machine(items);
-
-        items[2][1] = 2.99;
+        System.out.println(items[2][1]);
         items[2][1].getPrice();
 
     }
