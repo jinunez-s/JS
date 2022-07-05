@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
         "java/Exercise/vendingMachine",
-        "java/Exercise/various"
+        "java/Exercise/various",
+        "BootcampJava/Exercise/codeWars"
     ]
 }
