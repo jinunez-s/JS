@@ -5,5 +5,5 @@ for(let i = 0; i < numbers.length; i++){
 }
 console.log(sum);
 //reduce function
-const suma = numbers.reduce((a,b) => a + b, sum);
+const suma = numbers.reduce((a,b) => a + b, 0);
 console.log(suma);
